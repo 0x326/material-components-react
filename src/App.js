@@ -25,6 +25,7 @@ import Checkbox from './Checkbox'
 import CheckboxLabel from './CheckboxLabel'
 import FormField from './FormField'
 import Radio from './Radio'
+import ListItem from './ListItem'
 
 export default class App extends PureComponent {
   state = {
@@ -68,6 +69,11 @@ export default class App extends PureComponent {
             <Radio id="radio1" groupName="radios"/>
             <Radio id="radio1" groupName="radios"/>
           </FormField>
+        </main>
+        <main>
+          <h2>List Item</h2>
+          <ListItem text="Foo" />
+          <ListItem text="Hello World!" secondaryText="This has been a test" />
         </main>
       </div>
     )
