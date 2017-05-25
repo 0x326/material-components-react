@@ -31,6 +31,7 @@ export default class App extends PureComponent {
     checked: false,
     disabled: false,
     indeterminate: false,
+    status: "unchecked",
     changeEventCount: 0
   }
 
@@ -38,8 +39,9 @@ export default class App extends PureComponent {
     const {checked, disabled, indeterminate, status, changeEventCount} = this.state
     return (
       <div>
+        <h1>MDC-Web - React Examples</h1>
         <main>
-          <h1>MDC-Web Checkbox - React Example</h1>
+          <h2>Checkbox</h2>
           <FormField>
             <Checkbox id="my-checkbox"
                       labelId="my-checkbox-label"
