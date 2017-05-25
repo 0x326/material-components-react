@@ -1,3 +1,5 @@
+// This file has been modified from its original version
+
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -15,12 +17,14 @@
  */
 
 /* eslint-disable */
+// @flow
 
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react'
 
-import Checkbox from './Checkbox';
-import CheckboxLabel from './CheckboxLabel';
-import FormField from './FormField';
+import Checkbox from './Checkbox'
+import CheckboxLabel from './CheckboxLabel'
+import FormField from './FormField'
+import Radio from './Radio'
 
 export default class App extends PureComponent {
   state = {
@@ -31,37 +35,45 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const {checked, disabled, indeterminate, status, changeEventCount} = this.state;
+    const {checked, disabled, indeterminate, status, changeEventCount} = this.state
     return (
-      <main>
-        <h1>MDC-Web Checkbox - React Example</h1>
-        <FormField>
-          <Checkbox id="my-checkbox"
-                    labelId="my-checkbox-label"
-                    disabled={disabled}
-                    indeterminate={indeterminate}
-                    onChange={({target}) => this.setState({
-                      changeEventCount: changeEventCount + 1,
-                      checked: target.checked,
-                      indeterminate: false
-                    })}/>
-          <CheckboxLabel id="my-checkbox-label" for="my-checkbox">
-            The checkbox is currently {this.status()}
-          </CheckboxLabel>
-        </FormField>
-        <div style={{paddingTop: '12px'}}>
-          <button onClick={() => this.setState({indeterminate: true})}>Make Indeterminate</button>
-          <button onClick={() => this.setState({disabled: !disabled})}>Toggle Disabled</button>
-        </div>
-        <p>{changeEventCount} change events so far</p>
-      </main>
-    );
+      <div>
+        <main>
+          <h1>MDC-Web Checkbox - React Example</h1>
+          <FormField>
+            <Checkbox id="my-checkbox"
+                      labelId="my-checkbox-label"
+                      disabled={disabled}
+                      indeterminate={indeterminate}
+                      onChange={({target}) => this.setState({
+                        changeEventCount: changeEventCount + 1,
+                        checked: target.checked,
+                        indeterminate: false
+                      })}/>
+            <CheckboxLabel id="my-checkbox-label" for="my-checkbox">
+              The checkbox is currently {this.status()}
+            </CheckboxLabel>
+          </FormField>
+          <div style={{paddingTop: '12px'}}>
+            <button onClick={() => this.setState({indeterminate: true})}>Make Indeterminate</button>
+            <button onClick={() => this.setState({disabled: !disabled})}>Toggle Disabled</button>
+          </div>
+          <p>{changeEventCount} change events so far</p>
+        </main>
+        <main>
+          <h1>MDC-Web Radio - React Example</h1>
+          <FormField>
+            <Radio />
+          </FormField>
+        </main>
+      </div>
+    )
   }
 
   status() {
     if (this.state.indeterminate) {
-      return 'indeterminate';
+      return 'indeterminate'
     }
-    return this.state.checked ? 'checked' : 'unchecked';
+    return this.state.checked ? 'checked' : 'unchecked'
   }
 }

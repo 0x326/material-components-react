@@ -22,23 +22,23 @@
  * allows it to perform UI operations in a way idiomatic to React.
  */
 
-import React, {PureComponent, PropTypes} from 'react';
-import {Set as ImmutableSet, Map as ImmutableMap} from 'immutable';
+import React, {PureComponent, PropTypes} from 'react'
+import {Set as ImmutableSet, Map as ImmutableMap} from 'immutable'
 // Temporarily using relative reference until we publish on npm.
-import {getCorrectEventName} from '@material/animation/dist/mdc.animation';
-import {MDCRipple, MDCRippleFoundation} from '@material/ripple/dist/mdc.ripple';
-import {MDCCheckboxFoundation} from '@material/checkbox/dist/mdc.checkbox';
-import '@material/checkbox/dist/mdc.checkbox.css';
+import {getCorrectEventName} from '@material/animation/dist/mdc.animation'
+import {MDCRipple, MDCRippleFoundation} from '@material/ripple/dist/mdc.ripple'
+import {MDCCheckboxFoundation} from '@material/checkbox/dist/mdc.checkbox'
+import '@material/checkbox/dist/mdc.checkbox.css'
 
 function getMatchesProperty(HTMLElementPrototype) {
   return [
     'webkitMatchesSelector', 'msMatchesSelector', 'matches',
-  ].filter((p) => p in HTMLElementPrototype).pop();
+  ].filter((p) => p in HTMLElementPrototype).pop()
 }
 
-const {ANIM_END_EVENT_NAME} = MDCCheckboxFoundation.strings;
+const {ANIM_END_EVENT_NAME} = MDCCheckboxFoundation.strings
 
-const MATCHES = getMatchesProperty(HTMLElement.prototype);
+const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
 export default class Checkbox extends PureComponent {
   static propTypes = {
@@ -76,7 +76,7 @@ export default class Checkbox extends PureComponent {
     })),
     registerAnimationEndHandler: handler => {
       if (this.refs.root) {
-        this.refs.root.addEventListener(getCorrectEventName(window, 'animationend'), handler);
+        this.refs.root.addEventListener(getCorrectEventName(window, 'animationend'), handler)
       }
     },
     deregisterAnimationEndHandler: handler => {
@@ -91,27 +91,27 @@ export default class Checkbox extends PureComponent {
       // being our foundations are designed to be adaptable enough to fit the needs of the host
       // platform.
       if (this.refs.nativeCb) {
-        this.refs.nativeCb.addEventListener('change', handler);
+        this.refs.nativeCb.addEventListener('change', handler)
       }
     },
     deregisterChangeHandler: handler => {
       if (this.refs.nativeCb) {
-        this.refs.nativeCb.removeEventListener('change', handler);
+        this.refs.nativeCb.removeEventListener('change', handler)
       }
     },
     getNativeControl: () => {
       if (!this.refs.nativeCb) {
-        throw new Error('Invalid state for operation');
+        throw new Error('Invalid state for operation')
       }
-      return this.refs.nativeCb;
+      return this.refs.nativeCb
     },
     forceLayout: () => {
       if (this.refs.nativeCb) {
-        this.refs.nativeCb.offsetWidth;
+        this.refs.nativeCb.offsetWidth
       }
     },
     isAttachedToDOM: () => Boolean(this.refs.nativeCb),
-  });
+  })
 
   // For browser compatibility we extend the default adapter which checks for css variable support.
   rippleFoundation = new MDCRippleFoundation(Object.assign(MDCRipple.createAdapter(this), {
@@ -120,27 +120,27 @@ export default class Checkbox extends PureComponent {
     addClass: className => {
       this.setState(prevState => ({
         classes: prevState.classes.add(className)
-      }));
+      }))
     },
     removeClass: className => {
       this.setState(prevState => ({
         classes: prevState.classes.remove(className)
-      }));
+      }))
     },
     registerInteractionHandler: (evtType, handler) => {
-      this.refs.nativeCb.addEventListener(evtType, handler);
+      this.refs.nativeCb.addEventListener(evtType, handler)
     },
     deregisterInteractionHandler: (evtType, handler) => {
-      this.refs.nativeCb.removeEventListener(evtType, handler);
+      this.refs.nativeCb.removeEventListener(evtType, handler)
     },
     updateCssVariable: (varName, value) => {
       this.setState(prevState => ({
         rippleCss: prevState.rippleCss.set(varName, value)
-      }));
+      }))
     },
     computeBoundingRect: () => {
-      const {left, top} = this.refs.root.getBoundingClientRect();
-      const DIM = 40;
+      const {left, top} = this.refs.root.getBoundingClientRect()
+      const DIM = 40
       return {
         top,
         left,
@@ -148,9 +148,9 @@ export default class Checkbox extends PureComponent {
         bottom: top + DIM,
         width: DIM,
         height: DIM,
-      };
+      }
     },
-  }));
+  }))
 
   render() {
     // Within render, we generate the html needed to render a proper MDC-Web checkbox.
@@ -167,8 +167,8 @@ export default class Checkbox extends PureComponent {
                  this.setState({
                    checkedInternal: this.refs.nativeCb.checked,
                    indeterminateInternal: false
-                 });
-                 this.props.onChange(evt);
+                 })
+                 this.props.onChange(evt)
                }}/>
         <div className="mdc-checkbox__background">
           <svg className="mdc-checkbox__checkmark"
@@ -181,30 +181,30 @@ export default class Checkbox extends PureComponent {
           <div className="mdc-checkbox__mixedmark"></div>
         </div>
       </div>
-    );
+    )
   }
 
   // Within the two component lifecycle methods below, we invoke the foundation's lifecycle hooks
   // so that proper work can be performed.
   componentDidMount() {
-    this.foundation.init();
-    this.rippleFoundation.init();
+    this.foundation.init()
+    this.rippleFoundation.init()
   }
   componentWillUnmount() {
-    this.rippleFoundation.destroy();
-    this.foundation.destroy();
+    this.rippleFoundation.destroy()
+    this.foundation.destroy()
   }
 
   // Here we synchronize the internal state of the UI component based on what the user has specified.
   componentWillReceiveProps(props) {
     if (props.checked !== this.props.checked) {
-      this.setState({checkedInternal: props.checked, indeterminateInternal: false});
+      this.setState({checkedInternal: props.checked, indeterminateInternal: false})
     }
     if (props.indeterminate !== this.props.indeterminate) {
-      this.setState({indeterminateInternal: props.indeterminate});
+      this.setState({indeterminateInternal: props.indeterminate})
     }
     if (props.disabled !== this.props.disabled) {
-      this.setState({disabledInternal: props.disabled});
+      this.setState({disabledInternal: props.disabled})
     }
   }
 
@@ -213,13 +213,13 @@ export default class Checkbox extends PureComponent {
   // render()).
   componentDidUpdate() {
     if (this.refs.nativeCb) {
-      this.refs.nativeCb.indeterminate = this.state.indeterminateInternal;
+      this.refs.nativeCb.indeterminate = this.state.indeterminateInternal
     }
     // To make the ripple animation work we update the css properties after React finished building the DOM.
     if (this.refs.root) {
       this.state.rippleCss.forEach((v, k) => {
-        this.refs.root.style.setProperty(k, v);
-      });
+        this.refs.root.style.setProperty(k, v)
+      })
     }
   }
 }
