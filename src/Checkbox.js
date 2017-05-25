@@ -1,3 +1,5 @@
+// This file has been modified from its original version
+
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -15,12 +17,7 @@
  */
 
 /* eslint-disable */
-
-/**
- * @fileoverview This file shows how you can easily integrate MDC-Web components into React, using
- * checkbox as an example. Within the constructor, a foundation is initialized and given an adapter that
- * allows it to perform UI operations in a way idiomatic to React.
- */
+// @flow
 
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
@@ -41,6 +38,17 @@ const {ANIM_END_EVENT_NAME} = MDCCheckboxFoundation.strings
 
 const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
+/**
+ * Checkbox
+ * @see https://material.io/components/web/catalog/input-controls/checkboxes/
+ * @extends PureComponent
+ * @prop {string} id
+ * @prop {string} labelId
+ * @prop {boolean} checked
+ * @prop {boolean} disabled
+ * @prop {boolean} indeterminate
+ * @prop {function} onChange
+ */
 export default class Checkbox extends PureComponent {
   static propTypes = {
     id: PropTypes.string,
