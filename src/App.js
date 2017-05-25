@@ -63,9 +63,10 @@ export default class App extends PureComponent {
           <p>{changeEventCount} change events so far</p>
         </main>
         <main>
-          <h1>MDC-Web Radio - React Example</h1>
+          <h2>Radio</h2>
           <FormField>
-            <Radio />
+            <Radio id="radio1" groupName="radios"/>
+            <Radio id="radio1" groupName="radios"/>
           </FormField>
         </main>
       </div>
