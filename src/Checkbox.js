@@ -22,7 +22,8 @@
  * allows it to perform UI operations in a way idiomatic to React.
  */
 
-import React, {PureComponent, PropTypes} from 'react'
+import React, {PureComponent} from 'react'
+import PropTypes from 'prop-types'
 import {Set as ImmutableSet, Map as ImmutableMap} from 'immutable'
 // Temporarily using relative reference until we publish on npm.
 import {getCorrectEventName} from '@material/animation/dist/mdc.animation'
