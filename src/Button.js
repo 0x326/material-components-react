@@ -53,11 +53,11 @@ export default class Button extends PureComponent {
   static propTypes = {
     id: PropTypes.string,
     text: PropTypes.string,
-    dense: PropTypes.boolean,
-    raised: PropTypes.boolean,
-    compact: PropTypes.boolean,
-    colorWithPrimary: PropTypes.boolean,
-    colorWithAccent: PropTypes.boolean,
+    dense: PropTypes.bool,
+    raised: PropTypes.bool,
+    compact: PropTypes.bool,
+    colorWithPrimary: PropTypes.bool,
+    colorWithAccent: PropTypes.bool,
     onChange: PropTypes.func
   }
 

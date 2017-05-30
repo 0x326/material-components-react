@@ -11,7 +11,7 @@ export default class ListItem extends PureComponent {
     secondaryText: PropTypes.string,
     startDetail: PropTypes.element,
     endDetail: PropTypes.element,
-    dense: PropTypes.boolean
+    dense: PropTypes.bool
   }
 
   static defaultProps = {
