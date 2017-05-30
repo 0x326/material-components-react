@@ -25,16 +25,21 @@ export default class ListItem extends PureComponent {
   }
 
   render() {
+    //TODO: Add support for controlling the location of detail items
     return (
       <li className="mdc-list-item"
         id={this.props.id}>
-        {this.startDetail}
+        {this.props.startDetail && <div className="mdc-list-item__start-detail" aria-hidden="true">
+          {this.props.startDetail}
+        </div>}
         {this.props.secondaryText.length === 0 ? this.props.text :
           <span className="mdc-list-item__text">
             {this.props.text}
             <span className="mdc-list-item__text__secondary">{this.props.secondaryText}</span>
           </span>}
-        {this.endDetail}
+        {this.props.endDetail && <div className="mdc-list-item__end-detail" aria-hidden="true">
+          {this.props.endDetail}
+        </div>}
       </li>
     )
   }
