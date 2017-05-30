@@ -41,7 +41,7 @@ export default class App extends PureComponent {
   render() {
     const {checked, disabled, indeterminate, status, changeEventCount} = this.state
     return (
-      <div>
+      <div style={{paddingLeft: 1 + 'em'}}>
         <h1>MDC-Web - React Examples</h1>
         <main>
           <h2>Checkbox</h2>
