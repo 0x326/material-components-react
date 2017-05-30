@@ -25,9 +25,11 @@ import Checkbox from './Checkbox'
 import CheckboxLabel from './CheckboxLabel'
 import FormField from './FormField'
 import Radio from './Radio'
+import List from './List'
 import ListItem from './ListItem'
 import Button from './Button'
 import FAB from './FAB'
+import Icon from './Icon'
 
 export default class App extends PureComponent {
   state = {
@@ -73,9 +75,11 @@ export default class App extends PureComponent {
           </FormField>
         </main>
         <main>
-          <h2>List Item</h2>
-          <ListItem text="Foo" />
-          <ListItem text="Hello World!" secondaryText="This has been a test" />
+          <h2>List</h2>
+          <List maxWidth="600px">
+            <ListItem text="Foo" />
+            <ListItem text="Hello World!" secondaryText="This has been a test" endDetail={<Icon iconName="favorite"/>}/>
+          </List>
         </main>
         <main>
           <h2>Button</h2>
