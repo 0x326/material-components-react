@@ -62,7 +62,10 @@ export default class FAB extends PureComponent {
     id: PropTypes.string,
     mini: PropTypes.bool,
     plain: PropTypes.bool,
-    position: PropTypes.object,
+    position: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.arrayOf(PropTypes.object)
+    ]),
     ariaLabel: PropTypes.string,
     onChange: PropTypes.func
   }
