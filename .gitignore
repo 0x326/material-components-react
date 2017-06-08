@@ -1,6 +1,6 @@
 ### Custom
 build/
-*-old.js
+src/!*
 
 ### Node.js
 
