@@ -229,9 +229,6 @@ export default class FAB extends PureComponent {
   componentWillReceiveProps(props) {
   }
 
-  // Since we cannot set an indeterminate attribute on a native fab, we use componentDidUpdate to update
-  // the indeterminate value of the native fab whenever a change occurs (as opposed to doing so within
-  // render()).
   componentDidUpdate() {
     // To make the ripple animation work we update the css properties after React finished building the DOM.
     if (this.refs.root) {

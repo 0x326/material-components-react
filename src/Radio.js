@@ -166,16 +166,13 @@ export default class Radio extends PureComponent {
   // Here we synchronize the internal state of the UI component based on what the user has specified.
   componentWillReceiveProps(props) {
     if (props.checked !== this.props.checked) {
-      this.setState({checkedInternal: props.checked, indeterminateInternal: false})
+      this.setState({checkedInternal: props.checked})
     }
     if (props.disabled !== this.props.disabled) {
       this.setState({disabledInternal: props.disabled})
     }
   }
 
-  // Since we cannot set an indeterminate attribute on a native checkbox, we use componentDidUpdate to update
-  // the indeterminate value of the native checkbox whenever a change occurs (as opposed to doing so within
-  // render()).
   componentDidUpdate() {
     // To make the ripple animation work we update the css properties after React finished building the DOM.
     if (this.refs.root) {

@@ -134,9 +134,6 @@ export default class Button extends PureComponent {
     // Nothing to do
   }
 
-  // Since we cannot set an indeterminate attribute on a native checkbox, we use componentDidUpdate to update
-  // the indeterminate value of the native checkbox whenever a change occurs (as opposed to doing so within
-  // render()).
   componentDidUpdate() {
     // To make the ripple animation work we update the css properties after React finished building the DOM.
     if (this.refs.root) {
