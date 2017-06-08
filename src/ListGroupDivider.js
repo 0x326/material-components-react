@@ -5,17 +5,16 @@ import PropTypes from 'prop-types'
 import '@material/list/dist/mdc.list.css'
 
 /**
- * ListGroupDivider
  * @see https://material.io/components/web/catalog/input-controls/list-itemes/
- * @extends PureComponent
- * @prop {string} id
  */
 export default class ListGroupDivider extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string
   }
 
   static defaultProps = {
+    id: ""
   }
 
   render() {

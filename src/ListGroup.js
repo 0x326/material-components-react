@@ -6,19 +6,19 @@ import classnames from 'classnames'
 import '@material/list/dist/mdc.list.css'
 
 /**
- * ListGroup
  * @see https://material.io/components/web/catalog/input-controls/list-itemes/
- * @extends PureComponent
- * @prop {string} id
- * @prop {string} maxWidth
  */
 export default class ListGroup extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
+    /** Specifies a maximum width for the children of this group. Usually this is left `undefined`. */
     maxWidth: PropTypes.string
   }
 
   static defaultProps = {
+    id: "",
+    maxWidth: undefined
   }
 
   render() {

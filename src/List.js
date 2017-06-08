@@ -25,27 +25,30 @@ import classnames from 'classnames'
 import '@material/list/dist/mdc.list.css'
 
 /**
- * List
  * @see https://material.io/components/web/catalog/input-controls/list-itemes/
- * @extends PureComponent
- * @prop {string} id
- * @prop {boolean} dense
- * @prop {boolean} twoLine
- * @prop {string} maxWidth
  */
 export default class List extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
+    /** Specifies whether this list is dense. */
     dense: PropTypes.bool,
+    /** Specifies whether this is a two-lined list. *Note: it is your duty
+     * to ensure this flag is set properly based on what the type of list items
+     * you use*. */
     twoLine: PropTypes.bool,
+    /** Specifies whether this list is bordered as mentioned in the MDC documentation. */
     bordered: PropTypes.bool,
+    /** Specifies a maximum width for this list. Usually this is left `undefined`. */
     maxWidth: PropTypes.string
   }
 
   static defaultProps = {
+    id: "",
     dense: false,
     twoLine: false,
-    bordered: false
+    bordered: false,
+    maxWidth: undefined
   }
 
   state = {

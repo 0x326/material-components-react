@@ -37,31 +37,28 @@ function getMatchesProperty(HTMLElementPrototype) {
 const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
 /**
- * ListItem
  * @see https://material.io/components/web/catalog/input-controls/list-itemes/
- * @extends PureComponent
- * @prop {string} id
- * @prop {string} text
- * @prop {string} secondaryText
- * @prop {element} startDetail
- * @prop {element} endDetail
- * @prop {boolean} dense
  */
 export default class ListItem extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
+    /** Item text */
     text: PropTypes.string,
+    /** Optional second-line text */
     secondaryText: PropTypes.string,
+    /** Optional start MDC detail. Use an Icon */
     startDetail: PropTypes.element,
-    endDetail: PropTypes.element,
-    dense: PropTypes.bool
+    /** Optional end MDC detail Use an Icon */
+    endDetail: PropTypes.element
   }
 
   static defaultProps = {
     id: "",
     text: "",
     secondaryText: "",
-    dense: false
+    startDetail: undefined,
+    endDetail: undefined
   }
 
   state = {

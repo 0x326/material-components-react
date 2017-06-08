@@ -38,30 +38,45 @@ function getMatchesProperty(HTMLElementPrototype) {
 const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
 /**
- * FAB
  * @see https://material.io/components/web/catalog/buttons/floating-action-buttons/
- * @extends PureComponent
- * @prop {string} iconName The name of a Material Design Icon
- * @prop {string} id An ID for this FAB
- * @prop {boolean} mini Whether this FAB should be mini; see MDC documentation
- * @prop {boolean} plain Whether this FAB should be plain; see MDC documentation
- * @prop {object} position An object detailing where this FAB is to be absolutely positioned.
- *  Define any of the following properties with a string representing a CSS value:
- *    bottom, right, left, top.
- *  In addition, you can define the following properties for a CSS @media conditional:
- *    condition, condBottom, condRight, condLeft, condTop
- *  If you wish to specify more than one @media condition, use the following longhand form:
- *  Pass an array of objects with any of the following properties:
- *   mediaCondition, bottom, right, left, top
- * @prop {string} ariaLabel
- * @prop {function} onChange
  */
 export default class FAB extends PureComponent {
   static propTypes = {
+    /** The name of a Material Design Icon */
     iconName: PropTypes.string,
+    /** An ID for this FAB */
     id: PropTypes.string,
+    /** Whether this FAB should be mini; see MDC documentation */
     mini: PropTypes.bool,
+    /** Whether this FAB should be plain; see MDC documentation*/
     plain: PropTypes.bool,
+    /**
+     * An object detailing where this FAB is to be absolutely positioned.
+     *
+     * Define any of the following properties with a string representing a CSS value:
+     *
+     * - `bottom`
+     * - `right`
+     * - `left`
+     * - `top`
+     *
+     * In addition, you can define the following properties for a CSS `@media` conditional:
+     *
+     * - `condition`
+     * - `condBottom`
+     * - `condRight`
+     * - `condLeft`
+     * - `condTop`
+     *
+     * If you wish to specify more than one @media condition, use the following longhand form.
+     * Pass an array of objects with any of the following properties:
+     *
+     * - `mediaCondition`
+     * - `bottom`
+     * - `right`
+     * - `left`
+     * - `top`
+     */
     position: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.arrayOf(PropTypes.object)
@@ -75,6 +90,8 @@ export default class FAB extends PureComponent {
     iconName: "",
     mini: false,
     plain: false,
+    position: undefined,
+    ariaLabel: "",
     onChange: () => {}
   }
 

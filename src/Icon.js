@@ -1,25 +1,25 @@
 // @flow
 
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import 'material-design-icons/iconfont/material-icons.css'
 
-
 /**
- * Icon
- * @extends PureComponent
- * @prop {string} id
- * @prop {string} iconName
- * @prop {string} className
+ * @see https://material.io/icons/
  */
 export default class Icon extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
+    /** Material Design Icon name */
     iconName: PropTypes.string,
+    /** Optional placeholder for additional class names */
     className: PropTypes.string
   }
 
   static defaultProps = {
+    id: "",
     className: ""
   }
 

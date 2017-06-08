@@ -23,7 +23,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "docs": "styleguidist server",
+    "docs:build": "styleguidist build"
   }
 }

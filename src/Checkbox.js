@@ -39,31 +39,33 @@ const {ANIM_END_EVENT_NAME} = MDCCheckboxFoundation.strings
 const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
 /**
- * Checkbox
  * @see https://material.io/components/web/catalog/input-controls/checkboxes/
- * @extends PureComponent
- * @prop {string} id
- * @prop {string} labelId
- * @prop {boolean} checked
- * @prop {boolean} disabled
- * @prop {boolean} indeterminate
- * @prop {function} onChange
  */
 export default class Checkbox extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
-    labelId: PropTypes.string,
+    /** Text for aria-labelledby attribute */
+    ariaLabelId: PropTypes.string,
+    /** Specifies whether this checkbox begins checked or not.
+     * If this prop is changes, the checkbox will reflect the latest change */
     checked: PropTypes.bool,
+    /** Specifies whether this checkbox is disabled or not */
     disabled: PropTypes.bool,
+    /** Specifies whether this checkbox begins indeterminate or not.
+     * If this prop is changes, the checkbox will reflect the latest change */
     indeterminate: PropTypes.bool,
+    /** A listener for the `change` event */
     onChange: PropTypes.func
   }
 
   static defaultProps = {
+    id: "",
+    ariaLabelId: "",
     checked: false,
     disabled: false,
     indeterminate: false,
-    onChange: () => {}
+    onChange: (event) => {}
   }
 
   state = {
@@ -169,7 +171,7 @@ export default class Checkbox extends PureComponent {
                id={this.props.id}
                type="checkbox"
                className="mdc-checkbox__native-control"
-               aria-labelledby={this.props.labelId}
+               aria-labelledby={this.props.ariaLabelId}
                checked={this.state.checkedInternal}
                disabled={this.state.disabledInternal}
                onChange={evt => {

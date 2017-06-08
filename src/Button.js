@@ -37,31 +37,29 @@ function getMatchesProperty(HTMLElementPrototype) {
 const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
 /**
- * Button
  * @see https://material.io/components/web/catalog/input-controls/buttons/
- * @extends PureComponent
- * @prop {string} id
- * @prop {string} text
- * @prop {boolean} dense
- * @prop {boolean} raised
- * @prop {boolean} compact
- * @prop {boolean} colorWithPrimary
- * @prop {boolean} colorWithAccent
- * @prop {function} onChange
  */
 export default class Button extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
+    /** Button-text */
     text: PropTypes.string,
+    /** Specifies whether this is an MDC dense button */
     dense: PropTypes.bool,
+    /** Specifies whether this is a MDC raised button */
     raised: PropTypes.bool,
+    /** Specifies whether this is a MDC compact button */
     compact: PropTypes.bool,
+    /** Specifies this button is colored with the Material primary color */
     colorWithPrimary: PropTypes.bool,
+    /** Specifies this button is colored with the Material accent color */
     colorWithAccent: PropTypes.bool,
     onChange: PropTypes.func
   }
 
   static defaultProps = {
+    id: "",
     dense: false,
     raised: false,
     compact: false,

@@ -40,28 +40,29 @@ const MATCHES = getMatchesProperty(HTMLElement.prototype)
 
 
 /**
- * Radio Button
  * @see https://material.io/components/web/catalog/input-controls/radio-buttons/
- * @extends PureComponent
- * @prop {string} id
- * @prop {string} groupName
- * @prop {boolean} checked
- * @prop {boolean} disabled
- * @prop {function} onChange
  */
 export default class Radio extends PureComponent {
   static propTypes = {
+    /** Optional HTML id */
     id: PropTypes.string,
+    /** Group name for related radio buttons */
     groupName: PropTypes.string,
+    /** Specifies whether this radio button begins checked or not.
+     * If this prop is changes, the radio button will reflect the latest change */
     checked: PropTypes.bool,
+    /** Specifies whether this radio button is disabled or not.
+     * You must disable each radio in the `groupName` separately */
     disabled: PropTypes.bool,
+    /** A listener for the `change` event */
     onChange: PropTypes.func
   }
 
   static defaultProps = {
+    id: "",
     checked: false,
     disabled: false,
-    onChange: () => {}
+    onChange: (event) => {}
   }
 
   state = {
