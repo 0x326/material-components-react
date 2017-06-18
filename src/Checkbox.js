@@ -65,7 +65,7 @@ export default class Checkbox extends PureComponent {
     checked: false,
     disabled: false,
     indeterminate: false,
-    onChange: (event) => {}
+    onChange: (event: Event) => {}
   }
 
   state = {

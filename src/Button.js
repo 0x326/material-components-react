@@ -65,7 +65,7 @@ export default class Button extends PureComponent {
     compact: false,
     colorWithPrimary: false,
     colorWithAccent: false,
-    onChange: () => {}
+    onChange: (event: Event) => {}
   }
 
   state = {

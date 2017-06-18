@@ -62,7 +62,7 @@ export default class Switch extends PureComponent {
     checked: false,
     disabled: false,
     labelText: "",
-    onChange: (event) => {}
+    onChange: (event: Event) => {}
   }
 
   state = {

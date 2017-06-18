@@ -62,7 +62,7 @@ export default class Radio extends PureComponent {
     id: "",
     checked: false,
     disabled: false,
-    onChange: (event) => {}
+    onChange: (event: Event) => {}
   }
 
   state = {

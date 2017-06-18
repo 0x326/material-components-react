@@ -92,7 +92,7 @@ export default class FAB extends PureComponent {
     plain: false,
     position: undefined,
     ariaLabel: "",
-    onChange: () => {}
+    onChange: (event: Event) => {}
   }
 
   state = {
