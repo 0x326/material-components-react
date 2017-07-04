@@ -237,20 +237,12 @@ export default class Textfield extends PureComponent {
 
   // Here we synchronize the internal state of the UI component based on what the user has specified.
   componentWillReceiveProps(props) {
-    if (props.checked !== this.props.checked)
-      this.setState({checkedInternal: props.checked, indeterminateInternal: false})
-    if (props.indeterminate !== this.props.indeterminate)
-      this.setState({indeterminateInternal: props.indeterminate})
-    if (props.disabled !== this.props.disabled)
-      this.setState({disabledInternal: props.disabled})
   }
 
   // Since we cannot set an indeterminate attribute on a native textfield, we use componentDidUpdate to update
   // the indeterminate value of the native textfield whenever a change occurs (as opposed to doing so within
   // render()).
   componentDidUpdate() {
-    if (this.refs.nativeCb)
-      this.refs.nativeCb.indeterminate = this.state.indeterminateInternal
     // To make the ripple animation work we update the css properties after React finished building the DOM.
     if (this.refs.root)
       this.state.rippleCss.forEach((v, k) => {
