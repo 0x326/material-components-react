@@ -200,10 +200,10 @@ export default class Textfield extends PureComponent {
               })
             }}
             onBlur={event => {
-              this.setState({
+              this.setState(prevState => ({
                 isFocused: false,
-                isInputValid: this.props.required ? this.props.matchPattern.test(this.state.text) : true
-              })
+                isInputValid: this.props.required ? this.props.matchPattern.test(prevState.text) : true
+              }))
             }}
           />
           <label for={this.props.id} className={classnames("mdc-textfield__label", {
