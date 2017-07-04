@@ -78,16 +78,12 @@ export default class Button extends PureComponent {
   rippleFoundation = new MDCRippleFoundation(Object.assign(MDCRipple.createAdapter(this), {
     isUnbounded: () => true,
     isSurfaceActive: () => this.refs.root[MATCHES](':active'),
-    addClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.add(className)
-      }))
-    },
-    removeClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.remove(className)
-      }))
-    },
+    addClass: className => this.setState(prevState => ({
+      classes: prevState.classes.add(className)
+    })),
+    removeClass: className => this.setState(prevState => ({
+      classes: prevState.classes.remove(className)
+    })),
     registerInteractionHandler: (evtType, handler) => {
       this.refs.root.addEventListener(evtType, handler)
     },
@@ -136,10 +132,9 @@ export default class Button extends PureComponent {
 
   componentDidUpdate() {
     // To make the ripple animation work we update the css properties after React finished building the DOM.
-    if (this.refs.root) {
+    if (this.refs.root)
       this.state.rippleCss.forEach((v, k) => {
         this.refs.root.style.setProperty(k, v)
       })
-    }
   }
 }

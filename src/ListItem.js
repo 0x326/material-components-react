@@ -70,27 +70,21 @@ export default class ListItem extends PureComponent {
   rippleFoundation = new MDCRippleFoundation(Object.assign(MDCRipple.createAdapter(this), {
     isUnbounded: () => true,
     isSurfaceActive: () => this.refs.root[MATCHES](':active'),
-    addClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.add(className)
-      }))
-    },
-    removeClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.remove(className)
-      }))
-    },
+    addClass: className => this.setState(prevState => ({
+      classes: prevState.classes.add(className)
+    })),
+    removeClass: className => this.setState(prevState => ({
+      classes: prevState.classes.remove(className)
+    })),
     registerInteractionHandler: (evtType, handler) => {
       this.refs.root.addEventListener(evtType, handler)
     },
     deregisterInteractionHandler: (evtType, handler) => {
       this.refs.root.removeEventListener(evtType, handler)
     },
-    updateCssVariable: (varName, value) => {
-      this.setState(prevState => ({
-        rippleCss: prevState.rippleCss.set(varName, value)
-      }))
-    },
+    updateCssVariable: (varName, value) => this.setState(prevState => ({
+      rippleCss: prevState.rippleCss.set(varName, value)
+    })),
     computeBoundingRect: () => {
       //TODO: Figure out why ripple does not vary with touch location
       return this.refs.root.getBoundingClientRect()
@@ -133,10 +127,9 @@ export default class ListItem extends PureComponent {
 
   componentDidUpdate() {
     // To make the ripple animation work we update the css properties after React finished building the DOM.
-    if (this.refs.root) {
+    if (this.refs.root)
       this.state.rippleCss.forEach((v, k) => {
         this.refs.root.style.setProperty(k, v)
       })
-    }
   }
 }

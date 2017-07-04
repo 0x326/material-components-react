@@ -86,14 +86,12 @@ export default class Checkbox extends PureComponent {
       classes: prevState.classes.remove(className)
     })),
     registerAnimationEndHandler: handler => {
-      if (this.refs.root) {
+      if (this.refs.root)
         this.refs.root.addEventListener(getCorrectEventName(window, 'animationend'), handler)
-      }
     },
     deregisterAnimationEndHandler: handler => {
-      if (this.refs.root) {
+      if (this.refs.root)
         this.refs.root.removeEventListener(getCorrectEventName(window, 'animationend'), handler)
-      }
     },
     registerChangeHandler: handler => {
       // Note that this could also be handled outside of using the native DOM API.
@@ -101,25 +99,21 @@ export default class Checkbox extends PureComponent {
       // the handler passed here, as well as performs the other business logic. The point
       // being our foundations are designed to be adaptable enough to fit the needs of the host
       // platform.
-      if (this.refs.nativeCb) {
+      if (this.refs.nativeCb)
         this.refs.nativeCb.addEventListener('change', handler)
-      }
     },
     deregisterChangeHandler: handler => {
-      if (this.refs.nativeCb) {
+      if (this.refs.nativeCb)
         this.refs.nativeCb.removeEventListener('change', handler)
-      }
     },
     getNativeControl: () => {
-      if (!this.refs.nativeCb) {
+      if (!this.refs.nativeCb)
         throw new Error('Invalid state for operation')
-      }
       return this.refs.nativeCb
     },
     forceLayout: () => {
-      if (this.refs.nativeCb) {
+      if (this.refs.nativeCb)
         this.refs.nativeCb.offsetWidth
-      }
     },
     isAttachedToDOM: () => Boolean(this.refs.nativeCb),
   })
@@ -128,27 +122,21 @@ export default class Checkbox extends PureComponent {
   rippleFoundation = new MDCRippleFoundation(Object.assign(MDCRipple.createAdapter(this), {
     isUnbounded: () => true,
     isSurfaceActive: () => this.refs.nativeCb[MATCHES](':active'),
-    addClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.add(className)
-      }))
-    },
-    removeClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.remove(className)
-      }))
-    },
+    addClass: className => this.setState(prevState => ({
+      classes: prevState.classes.add(className)
+    })),
+    removeClass: className => this.setState(prevState => ({
+      classes: prevState.classes.remove(className)
+    })),
     registerInteractionHandler: (evtType, handler) => {
       this.refs.nativeCb.addEventListener(evtType, handler)
     },
     deregisterInteractionHandler: (evtType, handler) => {
       this.refs.nativeCb.removeEventListener(evtType, handler)
     },
-    updateCssVariable: (varName, value) => {
-      this.setState(prevState => ({
-        rippleCss: prevState.rippleCss.set(varName, value)
-      }))
-    },
+    updateCssVariable: (varName, value) => this.setState(prevState => ({
+      rippleCss: prevState.rippleCss.set(varName, value)
+    })),
     computeBoundingRect: () => {
       const {left, top} = this.refs.root.getBoundingClientRect()
       const DIM = 40
@@ -208,29 +196,24 @@ export default class Checkbox extends PureComponent {
 
   // Here we synchronize the internal state of the UI component based on what the user has specified.
   componentWillReceiveProps(props) {
-    if (props.checked !== this.props.checked) {
+    if (props.checked !== this.props.checked)
       this.setState({checkedInternal: props.checked, indeterminateInternal: false})
-    }
-    if (props.indeterminate !== this.props.indeterminate) {
+    if (props.indeterminate !== this.props.indeterminate)
       this.setState({indeterminateInternal: props.indeterminate})
-    }
-    if (props.disabled !== this.props.disabled) {
+    if (props.disabled !== this.props.disabled)
       this.setState({disabledInternal: props.disabled})
-    }
   }
 
   // Since we cannot set an indeterminate attribute on a native checkbox, we use componentDidUpdate to update
   // the indeterminate value of the native checkbox whenever a change occurs (as opposed to doing so within
   // render()).
   componentDidUpdate() {
-    if (this.refs.nativeCb) {
+    if (this.refs.nativeCb)
       this.refs.nativeCb.indeterminate = this.state.indeterminateInternal
-    }
     // To make the ripple animation work we update the css properties after React finished building the DOM.
-    if (this.refs.root) {
+    if (this.refs.root)
       this.state.rippleCss.forEach((v, k) => {
         this.refs.root.style.setProperty(k, v)
       })
-    }
   }
 }

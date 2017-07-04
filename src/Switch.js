@@ -76,27 +76,21 @@ export default class Switch extends PureComponent {
   rippleFoundation = new MDCRippleFoundation(Object.assign(MDCRipple.createAdapter(this), {
     isUnbounded: () => true,
     isSurfaceActive: () => this.refs.nativeCb[MATCHES](':active'),
-    addClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.add(className)
-      }))
-    },
-    removeClass: className => {
-      this.setState(prevState => ({
-        classes: prevState.classes.remove(className)
-      }))
-    },
+    addClass: className => this.setState(prevState => ({
+      classes: prevState.classes.add(className)
+    })),
+    removeClass: className => this.setState(prevState => ({
+      classes: prevState.classes.remove(className)
+    })),
     registerInteractionHandler: (evtType, handler) => {
       this.refs.nativeCb.addEventListener(evtType, handler)
     },
     deregisterInteractionHandler: (evtType, handler) => {
       this.refs.nativeCb.removeEventListener(evtType, handler)
     },
-    updateCssVariable: (varName, value) => {
-      this.setState(prevState => ({
-        rippleCss: prevState.rippleCss.set(varName, value)
-      }))
-    },
+    updateCssVariable: (varName, value) => this.setState(prevState => ({
+      rippleCss: prevState.rippleCss.set(varName, value)
+    })),
     computeBoundingRect: () => {
       const {left, top} = this.refs.root.getBoundingClientRect()
       const DIM = 40
@@ -152,20 +146,17 @@ export default class Switch extends PureComponent {
 
   // Here we synchronize the internal state of the UI component based on what the user has specified.
   componentWillReceiveProps(props) {
-    if (props.checked !== this.props.checked) {
+    if (props.checked !== this.props.checked)
       this.setState({checkedInternal: props.checked})
-    }
-    if (props.disabled !== this.props.disabled) {
+    if (props.disabled !== this.props.disabled)
       this.setState({disabledInternal: props.disabled})
-    }
   }
 
   componentDidUpdate() {
     // To make the ripple animation work we update the css properties after React finished building the DOM.
-    if (this.refs.root) {
+    if (this.refs.root)
       this.state.rippleCss.forEach((v, k) => {
         this.refs.root.style.setProperty(k, v)
       })
-    }
   }
 }
