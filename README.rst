@@ -1,6 +1,9 @@
 .. Project Links
+
 .. _contributors: https://github.com/0x326/material-components-react/graphs/contributors
+
 .. External Links
+
 .. _Atom: https://atom.io/
 .. _Create React App: https://github.com/facebookincubator/create-react-app
 .. _Flow-IDE: https://atom.io/packages/flow-ide
@@ -13,6 +16,7 @@
 .. _React: https://facebook.github.io/react/
 .. _SemVer: http://semver.org/
 .. _Yarn: https://yarnpkg.com
+.. _react-mdc-web: https://github.com/kradio3/react-mdc-web
 
 Google's Material Components for Web using React
 ================================================
@@ -178,3 +182,8 @@ Acknowledgments
 ---------------
 
 * Google, for designing and implementing an awesome UI
+
+Related Projects
+----------------
+
+* `react-mdc-web`_: Uses MDC classes (``material-components-react`` uses MDC foundation classes)
