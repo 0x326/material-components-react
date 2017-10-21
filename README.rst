@@ -16,7 +16,10 @@
 .. _React: https://facebook.github.io/react/
 .. _SemVer: http://semver.org/
 .. _Yarn: https://yarnpkg.com
+.. _react-mc: https://github.com/gutenye/react-mc
 .. _react-mdc-web: https://github.com/kradio3/react-mdc-web
+.. _react-material-components-web: https://github.com/react-mdc/react-material-components-web
+.. _rmwc: https://github.com/jamesmfriedman/rmwc
 
 Google's Material Components for Web using React
 ================================================
@@ -186,4 +189,7 @@ Acknowledgments
 Related Projects
 ----------------
 
+* `react-mc`_: Full implementation of MDC
 * `react-mdc-web`_: Uses MDC classes (``material-components-react`` uses MDC foundation classes)
+* `react-material-components-web`_
+* `rmwc`_
