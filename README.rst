@@ -24,6 +24,10 @@
 Google's Material Components for Web using React
 ================================================
 
+**Note:** Upon the discovery of `react-mc`_,
+which is an already-complete React_ implementation of `Material Components for the Web`_,
+this project is being discontinued in order to avoid unnecessarily duplicating work.
+
 (This project is not affiliated with Google.)
 
 This project enables you to easily use Google's modern `Material Components for the Web`_ library with
