@@ -24,6 +24,9 @@
 Google's Material Components for Web using React
 ================================================
 
+**Update:** rmwc_ is now also a complete implementation of `Material Components for the Web`_
+and, as of this writing, seems to be more actively maintained than react-mc_.
+
 **Note:** Upon the discovery of `react-mc`_,
 which is an already-complete React_ implementation of `Material Components for the Web`_,
 this project is being discontinued in order to avoid unnecessarily duplicating work.
@@ -193,7 +196,11 @@ Acknowledgments
 Related Projects
 ----------------
 
+.. _MDC's README: https://github.com/material-components/material-components-web/blob/master/README.md
+
+See also `MDC's README`_ for a maintained list of framework integrations
+
+* `rmwc`_: Full implementation of MDC; actively maintained
 * `react-mc`_: Full implementation of MDC
 * `react-mdc-web`_: Uses MDC classes (``material-components-react`` uses MDC foundation classes)
 * `react-material-components-web`_
-* `rmwc`_
